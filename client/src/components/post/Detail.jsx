@@ -49,7 +49,7 @@ const Detail = () => {
                 <span className='auth'>웹쓰</span>
             </div>
             <div className='detail__content'>
-                {postInfo.image ? <img src={`http://localhost:5050/${postInfo.image}`} alt={postInfo.title} /> : null}
+                {postInfo.image ? <img src={postInfo.image} alt={postInfo.title} /> : null}
                 {postInfo.content}
             </div>
             <div className='detail__btn'>

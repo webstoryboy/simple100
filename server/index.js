@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 const port = 5050;
+const config = require("./config/key.js");
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 app.use("/image", express.static("./image"));
@@ -13,9 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/post", require("./router/post.js"));
 
 app.listen(port, () => {
-    mongoose.connect(
-        "mongodb+srv://webstupids:forever0@cluster0.anmpxwe.mongodb.net/reactBlog?retryWrites=true&w=majority"
-    )
+    mongoose
+        .connect(config.mongoURI)
         .then(() => {
             console.log("listening  --> " + port);
             console.log("mongoose --> connecting");
